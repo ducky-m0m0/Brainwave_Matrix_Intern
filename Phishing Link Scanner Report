@@ -1,0 +1,34 @@
+Phishing Link Scanner Report
+
+1. Introduction
+
+This report describes the development and functionality of a simple phishing link scanner implemented in Python. The tool is designed to assist in identifying potentially malicious URLs that may be used in phishing attacks.
+
+2. Purpose
+
+The scanner aims to provide a quick heuristic analysis of URLs to flag suspicious links based on common phishing indicators. It is intended for use in authorized penetration testing environments to enhance security awareness and detection capabilities.
+
+3. Methodology
+
+The scanner analyzes URLs using the following heuristics:
+
+Checks if the domain is an IP address instead of a domain name, which is often suspicious.
+Evaluates the length of the URL, flagging unusually long URLs that may hide malicious intent.
+Searches for suspicious keywords commonly used in phishing URLs (e.g., "login", "verify", "update").
+Detects if the URL uses HTTPS, as lack of HTTPS can be a red flag.
+Identifies if the URL uses common URL shortening services, which can obscure the true destination.
+Each heuristic returns a boolean flag, and the scanner sums these to generate a suspicion score. URLs with a score above a threshold are flagged as potentially phishing.
+
+4. Implementation Details
+
+The scanner is implemented in Python using standard libraries such as re for regex matching and urllib.parse for URL parsing. The code is modular, with functions dedicated to each heuristic check, making it easy to extend or modify.
+
+5. Limitations
+
+The scanner relies on heuristic checks and does not guarantee detection of all phishing URLs.
+False positives may occur, especially with legitimate URLs containing suspicious keywords or long URLs.
+The tool does not currently integrate with external threat intelligence databases or APIs, which could improve accuracy.
+
+6. Conclusion
+
+This phishing link scanner provides a foundational tool for detecting suspicious URLs in penetration testing scenarios. It can be further enhanced by integrating real-time threat intelligence and machine learning models for improved detection accuracy.
